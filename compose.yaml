@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15
+    container_name: moviebooking_db
+    environment:
+      POSTGRES_DB: moviebooking
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGTZ: Asia/Kolkata 
+      TZ: Asia/Kolkata 
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Redis
+  redis:
+    image: redis:7
+    container_name: moviebooking_redis
+    ports:
+      - "6379:6379"
+
+  # Your Spring Boot App
+  app:
+    build: .                            # ← uses your Dockerfile
+    container_name: moviebooking_app
+    ports:
+      - "3000:3000"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/moviebooking?options=-c%20timezone%3DUTC
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+    depends_on:
+      - postgres                        # ← postgres starts before app
+      - redis                           # ← redis starts before app
+
+volumes:
+  postgres_data:
