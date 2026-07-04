@@ -5,11 +5,7 @@ Spring Boot | PostgreSQL | Redis | Docker | AWS EC2 | GitHub Actions
 
 ## Architecture Diagram
 
-GitHub → GitHub Actions → Docker Hub → AWS EC2
-                                          ↓
-                                    Spring Boot App
-                                    ↙           ↘
-                               PostgreSQL       Redis
+![Architecture](./assets/architecture.png)
 
 ## Features
 - Movie management
@@ -64,4 +60,3 @@ DELETE /api/showtimes/{id}
 ## Live URL
 http://100.30.239.142:3000
 
-![CI/CD](https://github.com/satya-datta/movie-booking/actions/workflows/deploy.yml/badge.svg)
