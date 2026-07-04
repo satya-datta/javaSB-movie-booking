@@ -88,3 +88,5 @@ Spring Boot | PostgreSQL | Redis | Docker | AWS EC2 | GitHub Actions
 ## Live URL
 http://100.30.239.142:3000
 
+## Docker Hub
+hub.docker.com/r/satyadatta/moviebooking
