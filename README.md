@@ -5,7 +5,7 @@ Spring Boot | PostgreSQL | Redis | Docker | AWS EC2 | GitHub Actions
 
 ## Architecture Diagram
 
-![Architecture](./assets/architecture.png)
+![Architecture](./ac.png)
 
 ## Features
 - Movie management
